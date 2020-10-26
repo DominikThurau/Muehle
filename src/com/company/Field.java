@@ -89,12 +89,27 @@ public class Field {
         }
     }
 
+    public boolean checkIfRemoveIsLegit(String ID, String currentColor){
+        if(koordinatenFeld.get(ID).color == currentColor || !koordinatenFeld.containsKey(ID)){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+    public boolean checkIfItIsTheOwnStone(String ID, String currentColor){
+        if(koordinatenFeld.get(ID).color != currentColor || !koordinatenFeld.containsKey(ID)){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
     public void setStoneAtPosition(String ID, String color) {
         koordinatenFeld.get(ID).setStoneColor(color);
     }
 
     public void moveStoneToPosition(String IDOld, String IDNew, String color) {
-        removeStone(IDOld);
+        removeOwnStone(IDOld);
         setStoneAtPosition(IDNew, color);
     }
 
@@ -124,8 +139,22 @@ public class Field {
         return false;
     }
 
-    public void removeStone(String ID) {
-        koordinatenFeld.get(ID).setStoneColor("0");
+    private boolean removeOwnStone(String ID ){
+        if (koordinatenFeld.get(ID).isProtected == false){
+            koordinatenFeld.get(ID).setStoneColor("00");
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean removeStone(String ID, Player notCurrentPlayer) {
+        if (koordinatenFeld.get(ID).isProtected == false){
+            koordinatenFeld.get(ID).setStoneColor("00");
+            notCurrentPlayer.decrementStones();
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public void drawField() {

@@ -5,6 +5,7 @@ public class Stone {
     int fieldLayer;
     int xPos;
     int yPos;
+    boolean isProtected = false;
 
 /*    Stone(String color, String fieldLayer){
         this.color = color;
