@@ -52,7 +52,6 @@ public class Logic {
         //System.out.println("Der Spieler mit den weißen Steinen beginnt.");
         gameField.drawField();
         roundManagement();
-
     }
 
     private void setRandomColor(String nameOne, String nameTwo) {
