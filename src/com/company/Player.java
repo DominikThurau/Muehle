@@ -4,7 +4,7 @@ public class Player {
     String name;
     String color;
     int stonesLeft = 9;
-    int anzahlSteineGesetzt = 0;
+    int anzahlSteineGesetzt = 6;
 
     Player(String name, String color) {
         this.name = name;

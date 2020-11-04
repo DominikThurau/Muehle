@@ -44,10 +44,10 @@ public class Logic {
         System.out.println("Spielerklärung: ...");
         System.out.println("Name von Spieler Eins: ");
         Scanner scannerNameOne = new Scanner(System.in);
-        String nameOne = scannerNameOne.next();
+        String nameOne = scannerNameOne.nextLine();
         System.out.println("Name von Spieler Zwei: ");
         Scanner scannerNameTwo = new Scanner(System.in);
-        String nameTwo = scannerNameTwo.next();
+        String nameTwo = scannerNameTwo.nextLine();
         setRandomColor(nameOne, nameTwo);
         //System.out.println("Der Spieler mit den weißen Steinen beginnt.");
         gameField.drawField();
@@ -70,7 +70,7 @@ public class Logic {
     }
 
     private void setStone() {
-        System.out.print(currentPlayer.getName() + ", setze Spielstein auf Feld: ");
+        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + "), setze Spielstein auf Feld: ");
         Scanner scannerFeld = new Scanner(System.in);
         String scannerEingabe = scannerFeld.next();
         if (gameField.checkIfPositionIsAvailable(scannerEingabe, currentPlayer.color)) {
@@ -95,10 +95,12 @@ public class Logic {
     }
 
     private void moveStone() {
-        System.out.print(currentPlayer.getName() + " Welchen Stein willst du verschieben ?: ");
+        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + ") Welchen Stein willst du verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
-
+        if(!gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)){
+            moveStone();
+        }
         System.out.print(currentPlayer.getName() + " und auf welches Feld ?: ");
         Scanner scannerFeld2 = new Scanner(System.in);
         String scannerEingabe3 = scannerFeld2.next();
@@ -111,7 +113,6 @@ public class Logic {
                 removeOpponentStone();
             }
             roundManagement();
-
         } else {
             System.out.println("Stein setzen hat nicht funktioniert");
 
@@ -120,7 +121,7 @@ public class Logic {
     }
 
     private void moveFreeStone() {
-        System.out.print(currentPlayer.getName() + " Welchen Stein willst du frei verschieben ?: ");
+        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + ") Welchen Stein willst du frei verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
         if (gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)) {

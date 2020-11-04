@@ -98,6 +98,7 @@ public class Field {
 
     public boolean checkIfItIsTheOwnStone(String ID, String currentColor) {
         if (koordinatenFeld.get(ID).color != currentColor || !koordinatenFeld.containsKey(ID)) {
+            System.out.println("Wähle einen eigenen Stein");
             return false;
         } else {
             return true;
@@ -141,7 +142,10 @@ public class Field {
 
     public boolean checkMuehle(String position, String color) {
         System.out.println("Mühle wird gechekt");
-        if (koordinatenFeld.get(position).fieldLayer == 0) {
+        if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
+            return true;
+        }
+        else if (koordinatenFeld.get(position).fieldLayer == 0) {
             if(outerField[koordinatenFeld.get(position).xPos][0].color.equals(outerField[koordinatenFeld.get(position).xPos][1].color) && outerField[koordinatenFeld.get(position).xPos][1].color.equals(outerField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
@@ -151,7 +155,7 @@ public class Field {
                 return true;
             }
         }
-        if (koordinatenFeld.get(position).fieldLayer == 1) {
+        else if (koordinatenFeld.get(position).fieldLayer == 1) {
             if(middleField[koordinatenFeld.get(position).xPos][0].color.equals(middleField[koordinatenFeld.get(position).xPos][1].color) && middleField[koordinatenFeld.get(position).xPos][1].color.equals(middleField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
@@ -161,7 +165,7 @@ public class Field {
                 return true;
             }
         }
-        if (koordinatenFeld.get(position).fieldLayer == 2) {
+        else if (koordinatenFeld.get(position).fieldLayer == 2) {
             if(innerField[koordinatenFeld.get(position).xPos][0].color.equals(innerField[koordinatenFeld.get(position).xPos][1].color) && innerField[koordinatenFeld.get(position).xPos][1].color.equals(innerField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
@@ -170,7 +174,9 @@ public class Field {
                 System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
             }
-        }return false;
+        }
+
+        return false;
     }
 
     private boolean removeOwnStone(String ID) {
