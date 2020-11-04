@@ -30,10 +30,10 @@ public class Logic {
         else if (currentPlayer.stonesLeft > 3) {
             System.out.println("Phase 2 startet");
             moveStone();
-        } /*phase 3*/ else if(currentPlayer.stonesLeft == 3){
+        } /*phase 3*/ else if (currentPlayer.stonesLeft == 3) {
             System.out.println("Phase 3 startet");
             moveFreeStone();
-        }else {
+        } else {
             System.out.println("Das Spiel ist vorbei, " + notCurrentplayer.name + " hat gewonnen:");
             System.out.println(playerOne.name + " hat " + playerOne.stonesLeft + " Steine, ");
             System.out.println(playerTwo.name + " hat " + playerTwo.stonesLeft + " Steine.");
@@ -77,7 +77,9 @@ public class Logic {
             gameField.setStoneAtPosition(scannerEingabe, currentPlayer.color);
             System.out.println("hat funktioniert");
             gameField.drawField();
-            CheckMuehle();
+            if(gameField.checkMuehle(scannerEingabe, currentPlayer.color)){
+                removeOpponentStone();
+            }
             currentPlayer.incrementStone();
             System.out.println("" + currentPlayer.anzahlSteineGesetzt);
 
@@ -105,7 +107,9 @@ public class Logic {
             gameField.moveStoneToPosition(scannerEingabe2, scannerEingabe3, currentPlayer.color);
             System.out.println("Stein setzen hat funktioniert");
             gameField.drawField();
-            CheckMuehle();
+            if(gameField.checkMuehle(scannerEingabe3, currentPlayer.color)){
+                removeOpponentStone();
+            }
             roundManagement();
 
         } else {
@@ -128,7 +132,9 @@ public class Logic {
                 gameField.moveStoneToPosition(scannerEingabe2, scannerEingabe3, currentPlayer.color);
                 System.out.println("Stein setzen hat funktioniert");
                 gameField.drawField();
-                CheckMuehle();
+                if(gameField.checkMuehle(scannerEingabe3, currentPlayer.color)){
+                    removeOpponentStone();
+                }
                 roundManagement();
 
             } else {
@@ -145,7 +151,7 @@ public class Logic {
 
     }
 
-    public void CheckMuehle() {
+  /*  public void CheckMuehle() {
         if (
                 gameField.outerField[0][0].getStoneColor().equals("S") && gameField.outerField[1][0].getStoneColor().equals("S") && gameField.outerField[2][0].getStoneColor().equals("S") ||
                         gameField.outerField[0][2].getStoneColor().equals("S") && gameField.outerField[1][2].getStoneColor().equals("S") && gameField.outerField[2][2].getStoneColor().equals("S") ||
@@ -209,8 +215,27 @@ public class Logic {
 
 
         }
+    }*/
+
+    private void removeOpponentStone() {
+        System.out.println(currentPlayer.getName() + "hat eine Mühle");
+        System.out.print(currentPlayer.getName() + " welchen Stein vom Gegner willst du entfernen ?: ");
+        Scanner scannerFeld4 = new Scanner(System.in);
+        String scannerEingabe5 = scannerFeld4.next();
+        if (gameField.checkIfRemoveIsLegit(scannerEingabe5, currentPlayer.color)) {
+            if (gameField.removeStone(scannerEingabe5, notCurrentplayer)) {
+                System.out.println("Stein entfernen hat funktioniert");
+                notCurrentplayer.decrementStones();
+                gameField.drawField();
+                roundManagement();
+            } else {
+                System.out.println("Stein entfernen hat nicht funktioniert");
+                removeOpponentStone();
+            }
+        } else {
+            System.out.println("Stein entfernen hat nicht funktioniert");
+            removeOpponentStone();
+        }
     }
-
-
 }
 

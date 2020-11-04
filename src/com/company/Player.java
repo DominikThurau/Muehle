@@ -3,8 +3,8 @@ package com.company;
 public class Player {
     String name;
     String color;
-    int stonesLeft = 3;
-    int anzahlSteineGesetzt = 8;
+    int stonesLeft = 9;
+    int anzahlSteineGesetzt = 0;
 
     Player(String name, String color) {
         this.name = name;
