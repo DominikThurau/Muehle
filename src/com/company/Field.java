@@ -74,8 +74,6 @@ public class Field {
 
     public boolean checkIfPositionIsAvailable(String ID, String color) {
         if (koordinatenFeld.containsKey(ID)) {
-            System.out.println("" + koordinatenFeld.get(ID).color);
-            System.out.println("Feld existiert");
 
             if (koordinatenFeld.get(ID).color == "W" || koordinatenFeld.get(ID).color == "S") {
                 return false;
@@ -116,7 +114,6 @@ public class Field {
 
     public boolean checkIfLegit(String IDOld, String IDNew) {
         if (koordinatenFeld.get(IDOld).fieldLayer == koordinatenFeld.get(IDNew).fieldLayer) {
-            System.out.println("Differenz: " + Math.abs(koordinatenFeld.get(IDOld).yPos - koordinatenFeld.get(IDNew).yPos));
             if (koordinatenFeld.get(IDOld).xPos == koordinatenFeld.get(IDNew).xPos) {
                 if (Math.abs(koordinatenFeld.get(IDOld).yPos - koordinatenFeld.get(IDNew).yPos) == 1) {
                     System.out.println("Der zug ist legitim");
@@ -141,7 +138,6 @@ public class Field {
     }
 
     public boolean checkMuehle(String position, String color) {
-        System.out.println("Mühle wird gechekt");
         if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
             return true;
         }
@@ -171,7 +167,6 @@ public class Field {
                 return true;
             }
             if(innerField[0][koordinatenFeld.get(position).yPos].color.equals(innerField[1][koordinatenFeld.get(position).yPos].color) && innerField[1][koordinatenFeld.get(position).yPos].color.equals(innerField[2][koordinatenFeld.get(position).yPos].color)){
-                System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
             }
         }

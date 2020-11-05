@@ -28,10 +28,10 @@ public class Logic {
         }
         //phase 2
         else if (currentPlayer.stonesLeft > 3) {
-            System.out.println("Phase 2 startet");
+            System.out.println("Phase 2 startet:");
             moveStone();
         } /*phase 3*/ else if (currentPlayer.stonesLeft == 3) {
-            System.out.println("Phase 3 startet");
+            System.out.println("Phase 3 startet:");
             moveFreeStone();
         } else {
             System.out.println("Das Spiel ist vorbei, " + notCurrentplayer.name + " hat gewonnen:");
@@ -41,7 +41,7 @@ public class Logic {
     }
 
     public void starteSpiel() {
-        System.out.println("Spielerklärung: ...");
+        printRules();
         System.out.println("Name von Spieler Eins: ");
         Scanner scannerNameOne = new Scanner(System.in);
         String nameOne = scannerNameOne.nextLine();
@@ -54,9 +54,18 @@ public class Logic {
         roundManagement();
     }
 
-    private void printRules(){
-
+    private void printRules() {
+        System.out.println("\u001b[32;1m  Spielregeln:");
+        System.out.println("-Der \u001b[35;1m Pinke \u001b[32;1m Spieler beginnt");
+        System.out.println("-Jeder Spieler hat in Phase 1, 9 Steine zum setzen");
+        System.out.println("-Wenn eine Mühle gebildet wird, dann darfst dem Gegner ein Stein nehmen");
+        System.out.println("-Phase 2 Du darfst deine Steine nur auf benachbarte Felder bewegen");
+        System.out.println("-Wenn ein Spieler keine legalen Züge machen kann \u001b[31;1m ->Spielende \u001b[32;1m");
+        System.out.println("-Wenn ein Spieler weniger als 3 Steine hat \u001b[31;1m -> Spielende \u001b[32;1m");
+        System.out.println("-Wenn ein Spieler genau 3 Steine hat darf er auf alle Felder springen");
+        System.out.println("-Eingabe der Spielfelder und Steinnummer immer 2 stellig. Z.Bsp. -01-\u001b[0m");
     }
+
     private void setRandomColor(String nameOne, String nameTwo) {
         int randomNumber;
         //Überprüfen ob es tatsächlich Zufall ist
@@ -80,11 +89,10 @@ public class Logic {
             gameField.setStoneAtPosition(scannerEingabe, currentPlayer.color);
             System.out.println("hat funktioniert");
             gameField.drawField();
-            if(gameField.checkMuehle(scannerEingabe, currentPlayer.color)){
+            if (gameField.checkMuehle(scannerEingabe, currentPlayer.color)) {
                 removeOpponentStone();
             }
             currentPlayer.incrementStone();
-            System.out.println("" + currentPlayer.anzahlSteineGesetzt);
 
             roundManagement();
 
@@ -101,7 +109,7 @@ public class Logic {
         System.out.print(currentPlayer.getName() + ", welchen Stein willst du verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
-        if(!gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)){
+        if (!gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)) {
             moveStone();
         }
         System.out.print(currentPlayer.getName() + " und auf welches Feld ?: ");
@@ -112,7 +120,7 @@ public class Logic {
             gameField.moveStoneToPosition(scannerEingabe2, scannerEingabe3, currentPlayer.color);
             System.out.println("Stein setzen hat funktioniert");
             gameField.drawField();
-            if(gameField.checkMuehle(scannerEingabe3, currentPlayer.color)){
+            if (gameField.checkMuehle(scannerEingabe3, currentPlayer.color)) {
                 removeOpponentStone();
             }
             roundManagement();
@@ -136,7 +144,7 @@ public class Logic {
                 gameField.moveStoneToPosition(scannerEingabe2, scannerEingabe3, currentPlayer.color);
                 System.out.println("Stein setzen hat funktioniert");
                 gameField.drawField();
-                if(gameField.checkMuehle(scannerEingabe3, currentPlayer.color)){
+                if (gameField.checkMuehle(scannerEingabe3, currentPlayer.color)) {
                     removeOpponentStone();
                 }
                 roundManagement();

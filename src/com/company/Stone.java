@@ -25,7 +25,6 @@ public class Stone {
     }
 
     public void setStoneColor(String color) {
-        System.out.println("farbe wurde geändert");
         this.color = color;
         if(color == "W"){
             colorCode = "\u001b[45m   \u001b[0m";
@@ -35,7 +34,6 @@ public class Stone {
         }else {
             colorCode = "   ";
         }
-        System.out.println("Color: " + colorCode);
     }
 
 
