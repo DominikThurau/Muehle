@@ -213,8 +213,6 @@ public class Logic {
                 System.out.println("Stein entfernen hat nicht funktioniert");
                 CheckMuehle();
             }
-
-
         }
     }*/
 

@@ -200,7 +200,7 @@ public class Field {
 
     public void drawField() {
         System.out.println("+-----+                         +-----+                         +-----+");
-        System.out.println("|  " + outerField[0][0].color + "  |-------------------------|  " + outerField[1][0].color + "  |-------------------------|  " + outerField[2][0].color + "  |");
+        System.out.println("|  " + outerField[0][0].colorCode + "  |-------------------------|  " + outerField[1][0].colorCode + "  |-------------------------|  " + outerField[2][0].colorCode + "  |");
         System.out.println("| 0 1 |-------------------------| 0 2 |-------------------------| 0 3 |");
         System.out.println("+-----+                         +-----+                         +-----+");
         System.out.println("  | |                             | |                             | |  ");

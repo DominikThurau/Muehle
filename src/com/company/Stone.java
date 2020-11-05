@@ -5,6 +5,7 @@ public class Stone {
     int fieldLayer;
     int xPos;
     int yPos;
+    String colorCode;
     boolean isProtected = false;
 
 /*    Stone(String color, String fieldLayer){
@@ -16,6 +17,11 @@ public class Stone {
         this.fieldLayer = fieldLayer;
         this.xPos =xPos;
         this.yPos = yPos;
+        if(color == "W"){
+            colorCode = "\u001B[37m   \u001b[0m";
+        }else {
+            colorCode = "\u001B[31m   \u001b[0m";
+        }
     }
 
     public String getStoneColor() {
