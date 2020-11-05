@@ -54,6 +54,9 @@ public class Logic {
         roundManagement();
     }
 
+    private void printRules(){
+
+    }
     private void setRandomColor(String nameOne, String nameTwo) {
         int randomNumber;
         //Überprüfen ob es tatsächlich Zufall ist
@@ -70,7 +73,7 @@ public class Logic {
     }
 
     private void setStone() {
-        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + "), setze Spielstein auf Feld: ");
+        System.out.print(currentPlayer.getName() + " setze Spielstein auf Feld: ");
         Scanner scannerFeld = new Scanner(System.in);
         String scannerEingabe = scannerFeld.next();
         if (gameField.checkIfPositionIsAvailable(scannerEingabe, currentPlayer.color)) {
@@ -95,7 +98,7 @@ public class Logic {
     }
 
     private void moveStone() {
-        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + ") Welchen Stein willst du verschieben ?: ");
+        System.out.print(currentPlayer.getName() + ", welchen Stein willst du verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
         if(!gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)){
@@ -121,7 +124,7 @@ public class Logic {
     }
 
     private void moveFreeStone() {
-        System.out.print(currentPlayer.getName() + "("+ currentPlayer.color + ") Welchen Stein willst du frei verschieben ?: ");
+        System.out.print(currentPlayer.getName() + ", welchen Stein willst du frei verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
         if (gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)) {

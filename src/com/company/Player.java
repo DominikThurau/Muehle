@@ -7,7 +7,12 @@ public class Player {
     int anzahlSteineGesetzt = 0;
 
     Player(String name, String color) {
-        this.name = name;
+        if(color =="W"){
+            this.name = "\u001b[35;1m" + name + "\u001b[0m";
+        }else {
+            this.name = "\u001b[34;1m" + name + "\u001b[0m";
+        }
+
         this.color = color;
     }
 

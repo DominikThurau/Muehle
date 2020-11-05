@@ -17,11 +17,7 @@ public class Stone {
         this.fieldLayer = fieldLayer;
         this.xPos =xPos;
         this.yPos = yPos;
-        if(color == "W"){
-            colorCode = "\u001B[37m   \u001b[0m";
-        }else {
-            colorCode = "\u001B[31m   \u001b[0m";
-        }
+        colorCode = "   ";
     }
 
     public String getStoneColor() {
@@ -29,7 +25,17 @@ public class Stone {
     }
 
     public void setStoneColor(String color) {
+        System.out.println("farbe wurde geändert");
         this.color = color;
+        if(color == "W"){
+            colorCode = "\u001b[45m   \u001b[0m";
+
+        }else if(color == "S") {
+            colorCode = "\u001b[44m   \u001b[0m";
+        }else {
+            colorCode = "   ";
+        }
+        System.out.println("Color: " + colorCode);
     }
 
 

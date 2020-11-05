@@ -190,7 +190,7 @@ public class Field {
 
     public boolean removeStone(String ID, Player notCurrentPlayer) {
         if (koordinatenFeld.get(ID).isProtected == false) {
-            koordinatenFeld.get(ID).setStoneColor(" ");
+            koordinatenFeld.get(ID).setStoneColor("");
             notCurrentPlayer.decrementStones();
             return true;
         } else {
@@ -200,37 +200,37 @@ public class Field {
 
     public void drawField() {
         System.out.println("+-----+                         +-----+                         +-----+");
-        System.out.println("|  " + outerField[0][0].colorCode + "  |-------------------------|  " + outerField[1][0].colorCode + "  |-------------------------|  " + outerField[2][0].colorCode + "  |");
+        System.out.println("| " + outerField[0][0].colorCode + " |-------------------------| " + outerField[1][0].colorCode + " |-------------------------| " + outerField[2][0].colorCode + " |");
         System.out.println("| 0 1 |-------------------------| 0 2 |-------------------------| 0 3 |");
         System.out.println("+-----+                         +-----+                         +-----+");
         System.out.println("  | |                             | |                             | |  ");
         System.out.println("  | |     +-----+               +-----+               +-----+     | |  ");
-        System.out.println("  | |     |  " + middleField[0][0].color + "  |---------------|  " + middleField[1][0].color + "  |---------------|  " + middleField[2][0].color + "  |     | |  ");
+        System.out.println("  | |     | " + middleField[0][0].colorCode + " |---------------| " + middleField[1][0].colorCode + " |---------------| " + middleField[2][0].colorCode + " |     | |  ");
         System.out.println("  | |     | 0 4 |---------------| 0 5 |---------------| 0 6 |     | |  ");
         System.out.println("  | |     +-----+               +-----+               +-----+     | |  ");
         System.out.println("  | |       | |                   | |                   | |       | |  ");
         System.out.println("  | |       | |     +-----+     +-----+     +-----+     | |       | |  ");
-        System.out.println("  | |       | |     |  " + innerField[0][0].color + "  |-----|  " + innerField[1][0].color + "  |-----|  " + innerField[2][0].color + "  |     | |       | |  ");
+        System.out.println("  | |       | |     | " + innerField[0][0].colorCode + " |-----| " + innerField[1][0].colorCode + " |-----| " + innerField[2][0].colorCode + " |     | |       | |  ");
         System.out.println("  | |       | |     | 0 7 |-----| 0 8 |-----| 0 9 |     | |       | |  ");
         System.out.println("  | |       | |     +-----+     +-----+     +-----+     | |       | |  ");
         System.out.println("  | |       | |       | |                     | |       | |       | |  ");
         System.out.println("+-----+   +-----+   +-----+                 +-----+   +-----+   +-----+");
-        System.out.println("|  " + outerField[0][1].color + "  |---|  " + middleField[0][1].color + "  |---|  " + innerField[0][1].color + "  |                 |  " + innerField[2][1].color + "  |---|  " + middleField[2][1].color + "  |---|  " + outerField[2][1].color + "  |");
+        System.out.println("| " + outerField[0][1].colorCode + " |---| " + middleField[0][1].colorCode + " |---| " + innerField[0][1].colorCode + " |                 | " + innerField[2][1].colorCode + " |---| " + middleField[2][1].colorCode + " |---| " + outerField[2][1].colorCode + " |");
         System.out.println("| 1 0 |---| 1 1 |---| 1 2 |                 | 1 3 |---| 1 4 |---| 1 5 |");
         System.out.println("+-----+   +-----+   +-----+                 +-----+   +-----+   +-----+");
         System.out.println("  | |       | |       | |                     | |       | |       | |  ");
         System.out.println("  | |       | |     +-----+     +-----+     +-----+     | |       | |  ");
-        System.out.println("  | |       | |     |  " + innerField[0][2].color + "  |-----|  " + innerField[1][2].color + "  |-----|  " + innerField[2][2].color + "  |     | |       | |  ");
+        System.out.println("  | |       | |     | " + innerField[0][2].colorCode + " |-----| " + innerField[1][2].colorCode + " |-----| " + innerField[2][2].colorCode + " |     | |       | |  ");
         System.out.println("  | |       | |     | 1 6 |-----| 1 7 |-----| 1 8 |     | |       | |  ");
         System.out.println("  | |       | |     +-----+     +-----+     +-----+     | |       | |  ");
         System.out.println("  | |       | |                   | |                   | |       | |  ");
         System.out.println("  | |     +-----+               +-----+               +-----+     | |  ");
-        System.out.println("  | |     |  " + middleField[0][2].color + "  |---------------|  " + middleField[1][2].color + "  |---------------|  " + middleField[2][2].color + "  |     | |  ");
+        System.out.println("  | |     | " + middleField[0][2].colorCode + " |---------------| " + middleField[1][2].colorCode + " |---------------| " + middleField[2][2].colorCode + " |     | |  ");
         System.out.println("  | |     | 1 9 |---------------| 2 0 |---------------| 2 1 |     | |  ");
         System.out.println("  | |     +-----+               +-----+               +-----+     | |  ");
         System.out.println("  | |                             | |                             | |  ");
         System.out.println("+-----+                         +-----+                         +-----+");
-        System.out.println("|  " + outerField[0][2].color + "  |-------------------------|  " + outerField[1][2].color + "  |-------------------------|  " + outerField[2][2].color + "  |");
+        System.out.println("| " + outerField[0][2].colorCode + " |-------------------------| " + outerField[1][2].colorCode + " |-------------------------| " + outerField[2][2].colorCode + " |");
         System.out.println("| 2 2 |-------------------------| 2 3 |-------------------------| 2 4 |");
         System.out.println("+-----+                         +-----+                         +-----+");
 /*        System.out.println(outerField[0][0].color + "-----------" + outerField[1][0].color + "-----------" + outerField[2][0].color);
