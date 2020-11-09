@@ -140,11 +140,14 @@ public class Field {
 
     public boolean checkMuehle(String position, String color) {
         if(koordinatenFeld.get(position).xPos == 1 || koordinatenFeld.get(position).yPos == 1){
+            System.out.println("Over the layers");
             if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
+                System.out.println("Over the layers, deep inside");
                 return true;
             }
         }
-        else if (koordinatenFeld.get(position).fieldLayer == 0) {
+        if (koordinatenFeld.get(position).fieldLayer == 0) {
+            System.out.println("Outer layer");
             if(outerField[koordinatenFeld.get(position).xPos][0].color.equals(outerField[koordinatenFeld.get(position).xPos][1].color) && outerField[koordinatenFeld.get(position).xPos][1].color.equals(outerField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
@@ -155,6 +158,7 @@ public class Field {
             }
         }
         else if (koordinatenFeld.get(position).fieldLayer == 1) {
+            System.out.println("Middle layer");
             if(middleField[koordinatenFeld.get(position).xPos][0].color.equals(middleField[koordinatenFeld.get(position).xPos][1].color) && middleField[koordinatenFeld.get(position).xPos][1].color.equals(middleField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
@@ -165,6 +169,7 @@ public class Field {
             }
         }
         else if (koordinatenFeld.get(position).fieldLayer == 2) {
+            System.out.println("Inner layer");
             if(innerField[koordinatenFeld.get(position).xPos][0].color.equals(innerField[koordinatenFeld.get(position).xPos][1].color) && innerField[koordinatenFeld.get(position).xPos][1].color.equals(innerField[koordinatenFeld.get(position).xPos][2].color)){
                 //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
                 return true;
