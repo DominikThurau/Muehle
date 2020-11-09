@@ -87,7 +87,8 @@ public class Field {
     }
 
     public boolean checkIfRemoveIsLegit(String ID, String currentColor) {
-        if (koordinatenFeld.get(ID).color == currentColor || !koordinatenFeld.containsKey(ID)) {
+        //System.out.println("OpColor: " +  opponentColor + " eigene Farbe: " + currentColor +  " ID: " +  ID + " in einer Mühle? " + checkMuehle(ID, opponentColor));
+        if (koordinatenFeld.get(ID).color == currentColor || !koordinatenFeld.containsKey(ID) || koordinatenFeld.get(ID).color == " ") {
             return false;
         } else {
             return true;
@@ -138,8 +139,10 @@ public class Field {
     }
 
     public boolean checkMuehle(String position, String color) {
-        if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
-            return true;
+        if(koordinatenFeld.get(position).xPos == 1 || koordinatenFeld.get(position).yPos == 1){
+            if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
+                return true;
+            }
         }
         else if (koordinatenFeld.get(position).fieldLayer == 0) {
             if(outerField[koordinatenFeld.get(position).xPos][0].color.equals(outerField[koordinatenFeld.get(position).xPos][1].color) && outerField[koordinatenFeld.get(position).xPos][1].color.equals(outerField[koordinatenFeld.get(position).xPos][2].color)){
@@ -170,21 +173,16 @@ public class Field {
                 return true;
             }
         }
-
         return false;
     }
 
     private boolean removeOwnStone(String ID) {
-        if (koordinatenFeld.get(ID).isProtected == false) {
             koordinatenFeld.get(ID).setStoneColor(" ");
             return true;
-        } else {
-            return false;
-        }
     }
 
     public boolean removeStone(String ID, Player notCurrentPlayer) {
-        if (koordinatenFeld.get(ID).isProtected == false) {
+        if (!checkMuehle(ID, notCurrentPlayer.color)) {
             koordinatenFeld.get(ID).setStoneColor("");
             notCurrentPlayer.decrementStones();
             return true;

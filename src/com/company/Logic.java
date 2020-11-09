@@ -82,7 +82,7 @@ public class Logic {
     }
 
     private void setStone() {
-        System.out.print(currentPlayer.getName() + " setze Spielstein auf Feld: ");
+        System.out.print(currentPlayer.getName() + currentPlayer.getStonesLeft() + " setze Spielstein auf Feld: ");
         Scanner scannerFeld = new Scanner(System.in);
         String scannerEingabe = scannerFeld.next();
         if (gameField.checkIfPositionIsAvailable(scannerEingabe, currentPlayer.color)) {
@@ -106,7 +106,7 @@ public class Logic {
     }
 
     private void moveStone() {
-        System.out.print(currentPlayer.getName() + ", welchen Stein willst du verschieben ?: ");
+        System.out.print(currentPlayer.getName() + currentPlayer.getStonesLeft() + ", welchen Stein willst du verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
         if (!gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)) {
@@ -132,7 +132,7 @@ public class Logic {
     }
 
     private void moveFreeStone() {
-        System.out.print(currentPlayer.getName() + ", welchen Stein willst du frei verschieben ?: ");
+        System.out.print(currentPlayer.getName() + currentPlayer.getStonesLeft() + ", welchen Stein willst du frei verschieben ?: ");
         Scanner scannerFeld1 = new Scanner(System.in);
         String scannerEingabe2 = scannerFeld1.next();
         if (gameField.checkIfItIsTheOwnStone(scannerEingabe2, currentPlayer.color)) {
@@ -228,14 +228,13 @@ public class Logic {
     }*/
 
     private void removeOpponentStone() {
-        System.out.println(currentPlayer.getName() + "hat eine Mühle");
+        System.out.println(currentPlayer.getName() + " hat eine Mühle");
         System.out.print(currentPlayer.getName() + " welchen Stein vom Gegner willst du entfernen ?: ");
         Scanner scannerFeld4 = new Scanner(System.in);
         String scannerEingabe5 = scannerFeld4.next();
         if (gameField.checkIfRemoveIsLegit(scannerEingabe5, currentPlayer.color)) {
             if (gameField.removeStone(scannerEingabe5, notCurrentplayer)) {
                 System.out.println("Stein entfernen hat funktioniert");
-                notCurrentplayer.decrementStones();
                 gameField.drawField();
                 roundManagement();
             } else {

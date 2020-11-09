@@ -21,10 +21,14 @@ public class Player {
     }
 
     public void decrementStones() {
-        stonesLeft--;
+        stonesLeft = stonesLeft-1;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public String getStonesLeft() {
+        return " (" + stonesLeft + " stones left)";
     }
 }
