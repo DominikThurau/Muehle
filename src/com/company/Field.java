@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.HashMap;
-
 import java.lang.Math;
 
 public class Field {
@@ -140,41 +139,38 @@ public class Field {
 
     public boolean checkMuehle(String position, String color) {
         if(koordinatenFeld.get(position).xPos == 1 || koordinatenFeld.get(position).yPos == 1){
-            System.out.println("Over the layers");
-            if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)&&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
-                System.out.println("Over the layers, deep inside");
+            if(outerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)
+                    &&middleField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color.equals(innerField[koordinatenFeld.get(position).xPos][koordinatenFeld.get(position).yPos].color)){
                 return true;
             }
         }
         if (koordinatenFeld.get(position).fieldLayer == 0) {
-            System.out.println("Outer layer");
-            if(outerField[koordinatenFeld.get(position).xPos][0].color.equals(outerField[koordinatenFeld.get(position).xPos][1].color) && outerField[koordinatenFeld.get(position).xPos][1].color.equals(outerField[koordinatenFeld.get(position).xPos][2].color)){
-                //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
+            if(outerField[koordinatenFeld.get(position).xPos][0].color.equals(outerField[koordinatenFeld.get(position).xPos][1].color)
+                    && outerField[koordinatenFeld.get(position).xPos][1].color.equals(outerField[koordinatenFeld.get(position).xPos][2].color)){
                 return true;
             }
-            if(outerField[0][koordinatenFeld.get(position).yPos].color.equals(outerField[1][koordinatenFeld.get(position).yPos].color) && outerField[1][koordinatenFeld.get(position).yPos].color.equals(outerField[2][koordinatenFeld.get(position).yPos].color)){
-                //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
+            if(outerField[0][koordinatenFeld.get(position).yPos].color.equals(outerField[1][koordinatenFeld.get(position).yPos].color)
+                    && outerField[1][koordinatenFeld.get(position).yPos].color.equals(outerField[2][koordinatenFeld.get(position).yPos].color)){
                 return true;
             }
         }
         else if (koordinatenFeld.get(position).fieldLayer == 1) {
-            System.out.println("Middle layer");
-            if(middleField[koordinatenFeld.get(position).xPos][0].color.equals(middleField[koordinatenFeld.get(position).xPos][1].color) && middleField[koordinatenFeld.get(position).xPos][1].color.equals(middleField[koordinatenFeld.get(position).xPos][2].color)){
-                //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
+            if(middleField[koordinatenFeld.get(position).xPos][0].color.equals(middleField[koordinatenFeld.get(position).xPos][1].color)
+                    && middleField[koordinatenFeld.get(position).xPos][1].color.equals(middleField[koordinatenFeld.get(position).xPos][2].color)){
                 return true;
             }
-            if(middleField[0][koordinatenFeld.get(position).yPos].color.equals(middleField[1][koordinatenFeld.get(position).yPos].color) && middleField[1][koordinatenFeld.get(position).yPos].color.equals(middleField[2][koordinatenFeld.get(position).yPos].color)){
-                //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
+            if(middleField[0][koordinatenFeld.get(position).yPos].color.equals(middleField[1][koordinatenFeld.get(position).yPos].color)
+                    && middleField[1][koordinatenFeld.get(position).yPos].color.equals(middleField[2][koordinatenFeld.get(position).yPos].color)){
                 return true;
             }
         }
         else if (koordinatenFeld.get(position).fieldLayer == 2) {
-            System.out.println("Inner layer");
-            if(innerField[koordinatenFeld.get(position).xPos][0].color.equals(innerField[koordinatenFeld.get(position).xPos][1].color) && innerField[koordinatenFeld.get(position).xPos][1].color.equals(innerField[koordinatenFeld.get(position).xPos][2].color)){
-                //System.out.println("Eine Mühle wurde von spieler " + color + "gebilded");
+            if(innerField[koordinatenFeld.get(position).xPos][0].color.equals(innerField[koordinatenFeld.get(position).xPos][1].color)
+                    && innerField[koordinatenFeld.get(position).xPos][1].color.equals(innerField[koordinatenFeld.get(position).xPos][2].color)){
                 return true;
             }
-            if(innerField[0][koordinatenFeld.get(position).yPos].color.equals(innerField[1][koordinatenFeld.get(position).yPos].color) && innerField[1][koordinatenFeld.get(position).yPos].color.equals(innerField[2][koordinatenFeld.get(position).yPos].color)){
+            if(innerField[0][koordinatenFeld.get(position).yPos].color.equals(innerField[1][koordinatenFeld.get(position).yPos].color)
+                    && innerField[1][koordinatenFeld.get(position).yPos].color.equals(innerField[2][koordinatenFeld.get(position).yPos].color)){
                 return true;
             }
         }
@@ -231,18 +227,5 @@ public class Field {
         System.out.println("| " + outerField[0][2].colorCode + " |-------------------------| " + outerField[1][2].colorCode + " |-------------------------| " + outerField[2][2].colorCode + " |");
         System.out.println("| 2 2 |-------------------------| 2 3 |-------------------------| 2 4 |");
         System.out.println("+-----+                         +-----+                         +-----+");
-/*        System.out.println(outerField[0][0].color + "-----------" + outerField[1][0].color + "-----------" + outerField[2][0].color);
-        System.out.println("|           |           |");
-        System.out.println("|   " + middleField[0][0].color + "-------" + middleField[1][0].color + "-------" + middleField[2][0].color + "   |");
-        System.out.println("|   |       |       |   |");
-        System.out.println("|   |   " + innerField[0][0].color + "---" + innerField[1][0].color + "---" + innerField[2][0].color + "   |   |");
-        System.out.println("|   |   |       |   |   |");
-        System.out.println(outerField[0][1].color + "--" + middleField[0][1].color + "---" + innerField[0][1].color + "       " + innerField[2][1].color + "---" + middleField[2][1].color + "---" + outerField[2][1].color);
-        System.out.println("|   |   |       |   |   |");
-        System.out.println("|   |   " + innerField[0][2].color + "---" + innerField[1][2].color + "---" + innerField[2][2].color + "   |   |");
-        System.out.println("|   |       |       |   |");
-        System.out.println("|   " + middleField[0][2].color + "-------" + middleField[1][2].color + "-------" + middleField[2][2].color + "   |");
-        System.out.println("|           |           |");
-        System.out.println(outerField[0][2].color + "-----------" + outerField[1][2].color + "-----------" + outerField[2][2].color);*/
     }
 }
