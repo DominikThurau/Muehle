@@ -14,7 +14,6 @@ public class Logic {
         if (currentPlayer == playerOne) {
             currentPlayer = playerTwo;
             notCurrentplayer = playerOne;
-
         } else {
             currentPlayer = playerOne;
             notCurrentplayer = playerTwo;
@@ -82,7 +81,7 @@ public class Logic {
     }
 
     private void setStone() {
-        System.out.print(currentPlayer.getName() + currentPlayer.getStonesLeft() + " setze Spielstein auf Feld: ");
+        System.out.print(currentPlayer.getName() + currentPlayer.getAnzahlSteineGesetzt() + " setze Spielstein auf Feld: ");
         Scanner scannerFeld = new Scanner(System.in);
         String scannerEingabe = scannerFeld.next();
         if (gameField.checkIfPositionIsAvailable(scannerEingabe, currentPlayer.color)) {

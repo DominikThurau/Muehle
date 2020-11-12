@@ -31,4 +31,8 @@ public class Player {
     public String getStonesLeft() {
         return " (" + stonesLeft + " stones left)";
     }
+
+    public String getAnzahlSteineGesetzt() {
+        return " (" + anzahlSteineGesetzt + " stones set)";
+    }
 }
